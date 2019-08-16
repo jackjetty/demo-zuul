@@ -1,0 +1,21 @@
+spring.application.name=api-gateway
+server.port=10001
+
+
+zuul.routes.api-a.path=/api-a/**
+zuul.routes.api-a.url=http://localhost:2001/
+zuul.routes.user.path=/user/**
+zuul.routes.user.serviceId=user
+zuul.routes.user.custom-sensitive-headers=true
+zuul.routes.user.sensitive-headers=Cookie,Set-Cookie
+zuul.routes.user.stripPrefix= false
+ribbon.eureka.enabled= false
+user.ribbon.listOfServices= http://127.0.0.1:11000/
+
+eureka.client.registerWithEureka=false 
+eureka.client.fetchRegistry=false
+logging.config=classpath:logback-spring.xml
+logging.level.root=INFO
+logging.level.com.demo=debug
+
+

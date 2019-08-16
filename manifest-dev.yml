@@ -1,0 +1,8 @@
+---
+applications:
+- name: demo-zuul
+  memory: 780M
+  random-route: true
+  path: build/libs/demo-zuul-1.0-SNAPSHOT.jar
+ 
+

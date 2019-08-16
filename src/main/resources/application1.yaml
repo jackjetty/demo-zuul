@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 1101
+
+zuul:
+  routes:
+    #  single-instance
+    api-a:
+      path: /api-a/**
+      url: http://localhost:2001/
+    #  multi-instance
+    user:
+      path: /user/**
+      serviceId: user
+      stripPrefix: false
+      custom-sensitive-headers: true
+      sensitive-headers: Cookie,Set-Cookie
+
+
+logging:
+  level:
+    root: INFO
+  config:
+    classpath: logback-spring.xml
+eureka:
+  client:
+    fetchRegistry: false
+    registerWithEureka: false
+ribbon:
+  eureka:
+    enabled: false
+user:
+  ribbon:
+    listOfServers: http://127.0.0.1:11000/
